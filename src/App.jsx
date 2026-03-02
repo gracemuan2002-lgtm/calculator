@@ -6,11 +6,10 @@ const App = () => {
   const[operator,setOperator]=useState("");
   const[firstNum,setFirstNum]=useState("");
   const[secondNum,setSecondNum]=useState("");
-  const clickHandle=(num)=>{
-    
   
+  const clickHandle=(num)=>{
     if(operator){
-      const newSecondNum=secondNum+num;
+      const newSecondNum= secondNum+num;
       setSecondNum(newSecondNum)
       setInput(`${firstNum}${operator}${newSecondNum}`)}
       else{
@@ -19,15 +18,18 @@ const App = () => {
         setInput(newFirstNum);
       }}
      
-      const operaTor=(op)=>{
+  const operaTor=(op)=>{
         if(firstNum==="") return;
         setOperator(op);
-        setInput(`${firstNum}${op}`);}
-        const equalHandle=()=>{
+        setInput(`${firstNum}${op}`);
+      }
+
+  const equalHandle=()=>{
           if(!(operator || secondNum)) return;
           const a= parseFloat(firstNum);
           const b= parseFloat(secondNum);
           let result="0";
+
           switch(operator){
             case "+":
               result=a+b
@@ -53,14 +55,15 @@ const App = () => {
             default:
               break;
           }
-          console.log(result);
+          
           setInput(result.toString());
           setFirstNum(result.toString());
           setSecondNum("");
           setOperator("null");
         }
-        //delete
-        const deleteHandle=()=>{
+
+  //delete
+  const deleteHandle=()=>{
           if(operator){
             if(secondNum.length>0){
               const newSecondNum=secondNum.slice(0,-1);
@@ -79,12 +82,14 @@ const App = () => {
             }
             
           }
-          const allclear=()=>{
+          
+          }
+
+  const allclear=()=>{
             setInput("");
             setFirstNum("");
             setSecondNum("");
-            setOperator("null");
-          }}
+            setOperator("null");}
 
 
   return (
@@ -94,7 +99,7 @@ const App = () => {
           {input || "0"}
         </div>
         <div className='grid grid-cols-[0.5fr_0.5fr_0.5fr_0.5fr] gap-2'>
-          <button onClick={'allclear'} className='py-2 bg-gray-500 text-white rounded-md'>AC</button>
+          <button onClick={()=>allclear()} className='py-2 bg-gray-500 text-white rounded-md'>AC</button>
           <button onClick={deleteHandle} className='py-2 bg-gray-500 text-white rounded-md'>&#9003;</button>
           <button onClick={()=>operaTor("=/-")} className='py-2 bg-gray-500 text-white rounded-md'>+/-</button>
           <button onClick={()=>operaTor("/")} className='py-2 bg-gray-500 text-white rounded-md'>&#247;</button>
