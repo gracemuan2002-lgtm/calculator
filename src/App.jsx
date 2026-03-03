@@ -44,7 +44,7 @@ const App = () => {
               result=b === 0 ? "Error" : a/b
               break;
             case "%":
-              result=a%b
+              result=a*(b/100)
               break;
             case ".": 
               result=parseFloat(`${a}.${b}`)
@@ -59,7 +59,7 @@ const App = () => {
           setInput(result.toString());
           setFirstNum(result.toString());
           setSecondNum("");
-          setOperator("null");
+          setOperator("");
         }
 
   //delete
@@ -89,16 +89,18 @@ const App = () => {
             setInput("");
             setFirstNum("");
             setSecondNum("");
-            setOperator("null");}
+            setOperator("");}
 
 
   return (
     <div className='bg-black w-screen h-screen flex items-center justify-center'>
+      
       <div className='bg-blue-400 w-[600px] h-auto py-4 px-4 rounded-md'>
-        <div className='w-full bg-white py-2 px-2 rounded-md mb-6'>
+      <div className='text-white text-2xl font-bold flex item-center justify-center shadow-gray-400 border-spacing-1'>CALCULATOR</div><br></br> 
+        <div className='w-full bg-white py-2 px-2 rounded-md mb-6 border-2 border-green-300'>
           {input || "0"}
         </div>
-        <div className='grid grid-cols-[0.5fr_0.5fr_0.5fr_0.5fr] gap-2'>
+        <div className='grid grid-cols-[0.5fr_0.5fr_0.5fr_0.5fr] gap-2 shadow-md'>
           <button onClick={()=>allclear()} className='py-2 bg-gray-500 text-white rounded-md'>AC</button>
           <button onClick={deleteHandle} className='py-2 bg-gray-500 text-white rounded-md'>&#9003;</button>
           <button onClick={()=>operaTor("=/-")} className='py-2 bg-gray-500 text-white rounded-md'>+/-</button>
